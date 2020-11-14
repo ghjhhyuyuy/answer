@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "80:8080"
+  mysql:
+        image: mysql:5.7.16
+        restart: always
+        environment:
+          - "MYSQL_ROOT_PASSWORD=yourpass"
+          - "TZ=Asia/Shanghai"
+        volumes:
+            - "present-data-mysql:/var/lib/mysql:rw"
+        ports: 
+            - "3306:3306"
+volumes:
+    present-data-mysql: {}
